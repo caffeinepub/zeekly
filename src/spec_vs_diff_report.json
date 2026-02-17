@@ -1,0 +1,69 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-17T08:12:48.387Z",
+  "summary": "Diff adds a Zeekly landing page with hero + Lifestyle CTA, blog list/detail routes, themed styling, and a Motoko posts API. Some extra backend endpoints and UI features were implemented beyond the request; no clearly provable core requirement gaps from the provided diff summary.",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "Backend supports creating posts via an update call (newPost), which was not requested (only minimal query content API was required).",
+      "reason": "REQ-4 only calls for query methods to fetch list + single post by identifier; no authoring/mutation endpoints were requested.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Backend exposes additional query endpoints getPostsByCategory and getPostCount that were not requested.",
+      "reason": "REQ-4 acceptance criteria only require getAllPosts (list) and getPost (single).",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Posts list page includes search and category filtering UI.",
+      "reason": "REQ-3 requires list + detail navigation with metadata; it does not ask for search/filter functionality.",
+      "evidence": [
+        "frontend/src/pages/PostsListPage.tsx",
+        "frontend/src/hooks/usePosts.ts"
+      ]
+    },
+    {
+      "description": "Footer includes Caffeine.ai attribution link with UTM parameters and target=\"_blank\".",
+      "reason": "Not requested by any REQ; the only explicit same-tab constraint applies to the Lifestyle CTA.",
+      "evidence": [
+        "frontend/src/components/SiteFooter.tsx"
+      ]
+    },
+    {
+      "description": "Footer includes social media icon links (GitHub/X/LinkedIn) with placeholder href=\"#\".",
+      "reason": "Not requested in requirements.",
+      "evidence": [
+        "frontend/src/components/SiteFooter.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/PostCard.tsx",
+    "frontend/src/components/SiteFooter.tsx",
+    "frontend/src/components/SiteHeader.tsx",
+    "frontend/src/components/SiteLayout.tsx",
+    "frontend/src/content/samplePosts.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/usePosts.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/PostDetailPage.tsx",
+    "frontend/src/pages/PostsListPage.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

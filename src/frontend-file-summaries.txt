@@ -1,0 +1,14 @@
+{
+  "frontend/src/App.tsx": "Main application component that sets up TanStack Router with routes for home, posts list, and post detail pages, all wrapped in the SiteLayout component.",
+  "frontend/src/components/SiteLayout.tsx": "Layout wrapper component that provides consistent structure with header, main content area, and footer across all pages.",
+  "frontend/src/components/SiteHeader.tsx": "Responsive navigation header with Zeekly branding, desktop and mobile navigation menus, and active route highlighting.",
+  "frontend/src/components/SiteFooter.tsx": "Footer component with branding, quick links, social media icons, copyright notice, and Caffeine.ai attribution with UTM tracking.",
+  "frontend/src/components/PostCard.tsx": "Reusable blog post card component displaying post title, excerpt, author, date, and category badges with hover effects and navigation.",
+  "frontend/src/pages/HomePage.tsx": "Landing page featuring hero section with background image, prominent Lifestyle CTA button, feature highlights, and sections for featured and latest articles.",
+  "frontend/src/pages/PostsListPage.tsx": "Posts listing page with search functionality, category filtering, and responsive grid layout displaying all blog posts.",
+  "frontend/src/pages/PostDetailPage.tsx": "Individual post detail page showing full article content with metadata, categories, formatted date, and navigation back to posts list.",
+  "frontend/src/hooks/usePosts.ts": "React Query hooks for fetching posts data from backend (all posts, single post, posts by category, post count) with fallback to sample data.",
+  "frontend/src/content/samplePosts.ts": "Sample blog posts dataset covering technology topics including AI, microservices, startups, Web3, cybersecurity, cloud computing, mobile development, data science, and sustainability.",
+  "frontend/src/index.css": "Global styles with OKLCH-based color system featuring a tech-forward blue primary color palette optimized for both light and dark modes, plus typography hierarchy.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom font families (Inter, JetBrains Mono), extended shadows, and design tokens matching the modern tech aesthetic."
+}

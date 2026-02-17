@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build a modern, clean, professional technology-focused guest post/blog platform site named Zeekly, featuring high-quality tech content and a structured blog layout with a post-hero CTA button.",
+  "architectural_notes": [
+    "Site name: Zeekly; purpose: technology-focused guest post/blog platform.",
+    "Visual style: modern, clean, professional; strong tech-oriented identity; minimal layout; clear typography; structured blog format.",
+    "CTA requirement: after hero section, prominent button text “Lifestyle” linking to https://zeekly.co.uk/; opens in same tab; visually noticeable but clean and non-ad-like."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Zeekly wordmark logo in a modern tech style (zeekly-wordmark.dim_1200x300.png)\n- Abstract minimal tech hero background/illustration (zeekly-hero-bg.dim_2400x1200.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-modern-clean-professional-landing-page-for-zeekly-with-a-strong-tech-oriented-visual-identity-using-a-minimal-layout-clear-typography-and-a-structured-blog-format-suitable-for-a-technology-focused-guest-post-platform",
+      "title": "Create a modern, clean, professional landing page for “Zeekly” with a strong tech-oriented visual identity, using a minimal layout, clear typography, and a structured blog format suitable for a technology-focused guest post platform.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-prominent-call-to-action-button-immediately-after-the-hero-section-with-the-label-lifestyle-that-links-to-https-zeekly-co-uk-and-opens-in-the-same-tab-the-button-must-feel-native-to-the-site-design-not-ad-like-while-remaining-visually-noticeable-clean-and-professional",
+      "title": "Add a prominent call-to-action button immediately after the hero section with the label “Lifestyle” that links to https://zeekly.co.uk/ and opens in the same tab; the button must feel native to the site design (not ad-like) while remaining visually noticeable, clean, and professional.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-core-blog-navigation-and-pages-for-a-structured-publishing-experience-a-posts-listing-view-and-a-post-detail-view-pre-populated-with-sample-content-covering-tech-articles-digital-innovation-software-guides-startup-insights-and-trending-technology-news",
+      "title": "Implement core blog navigation and pages for a structured publishing experience: a posts listing view and a post detail view, pre-populated with sample content covering tech articles, digital innovation, software guides, startup insights, and trending technology news.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-minimal-backend-content-api-for-posts-so-the-frontend-can-fetch-post-lists-and-individual-post-details-from-the-internet-computer-canister-single-motoko-actor-using-a-simple-data-model-suitable-for-blog-publishing",
+      "title": "Add a minimal backend content API for posts so the frontend can fetch post lists and individual post details from the Internet Computer canister (single Motoko actor), using a simple data model suitable for blog publishing.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-coherent-distinctive-visual-theme-colors-typography-spacing-component-styling-appropriate-for-a-modern-technology-publication-and-enforce-it-consistently-across-zeekly-pages-and-components",
+      "title": "Apply a coherent, distinctive visual theme (colors, typography, spacing, component styling) appropriate for a modern technology publication and enforce it consistently across Zeekly pages and components.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create Zeekly website as a technology-focused guest post platform with a structured blog format (tech articles, innovation, software guides, startup insights, tech news).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Design UI with modern, clean, professional tech-oriented visual identity: minimal layout, clear typography, structured blog layout suitable for guest posting.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add a prominent post-hero call-to-action button labeled “Lifestyle” linking to https://zeekly.co.uk/ (opens in same tab) and styled naturally within the modern tech design (not like an advertisement).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Zeekly",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,23 @@
+{
+  "backend/main.mo": "Defines a Motoko actor for storing and retrieving blog posts with create, fetch, list, filter, and count operations.",
+  "feature_evidence.json": "Contains feature evidence metadata mapping features to frontend files, components, and test IDs.",
+  "frontend-file-summaries.txt": "Provides prewritten summaries for various frontend source files used across the app.",
+  "frontend/index.css": "Defines global CSS and Tailwind variables for theming, colors, and layout in light and dark modes.",
+  "frontend/index.html": "Base HTML entry point loading the React application via main.tsx.",
+  "frontend/src/App.tsx": "Sets up TanStack Router with routes for home, posts list, and post detail pages using SiteLayout.",
+  "frontend/src/components/PostCard.tsx": "Renders a blog post preview card showing categories, title, excerpt, author, and formatted date.",
+  "frontend/src/components/SiteFooter.tsx": "Displays site footer with branding, links, social icons, and Caffeine.ai attribution.",
+  "frontend/src/components/SiteHeader.tsx": "Implements the responsive site header with logo, navigation links, and mobile menu.",
+  "frontend/src/components/SiteLayout.tsx": "Wraps pages with a header, main content area, and footer layout structure.",
+  "frontend/src/content/samplePosts.ts": "Exports sample blog post data used as fallback content for the site.",
+  "frontend/src/hooks/useActor.ts": "Creates and manages a backend actor using React Query, updating it when the user's identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides context and hooks for managing Internet Identity authentication using DFINITY AuthClient.",
+  "frontend/src/hooks/usePosts.ts": "Defines React Query hooks to fetch posts, single posts, posts by category, and post counts with fallbacks.",
+  "frontend/src/index.css": "Tailwind-based global styles defining light/dark mode variables and base typography.",
+  "frontend/src/main.tsx": "Bootstraps the React app with QueryClient and InternetIdentity providers.",
+  "frontend/src/pages/HomePage.tsx": "Renders the homepage with hero content, featured posts, lifestyle CTA, and feature highlights.",
+  "frontend/src/pages/PostDetailPage.tsx": "Displays full post details by slug with loading, error handling, metadata, and formatted content.",
+  "frontend/src/pages/PostsListPage.tsx": "Shows a searchable, filterable list of posts with category selection and loading states.",
+  "frontend/tailwind.config.js": "Configures Tailwind with custom colors, fonts, container settings, animations, and plugins for typography, container queries, and animations.",
+  "project_state.json": "Defines the project’s current state, goals, features, and design requirements for building the Zeekly tech‑focused blog platform."
+}
