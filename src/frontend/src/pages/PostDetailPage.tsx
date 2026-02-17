@@ -1,6 +1,7 @@
 import { useParams, Link } from '@tanstack/react-router';
 import { Calendar, User, ArrowLeft, Tag } from 'lucide-react';
 import { usePost } from '../hooks/usePosts';
+import { safeFormatPostDate } from '../lib/postDate';
 
 export default function PostDetailPage() {
   const { slug } = useParams({ from: '/posts/$slug' });
@@ -43,12 +44,8 @@ export default function PostDetailPage() {
     );
   }
 
-  const date = new Date(Number(post.datePublished));
-  const formattedDate = date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  // Safely parse and format the date, with fallback for invalid dates
+  const dateInfo = safeFormatPostDate(post.datePublished);
 
   return (
     <article className="container py-12">
@@ -83,10 +80,12 @@ export default function PostDetailPage() {
               <User className="h-4 w-4" />
               <span className="font-medium">{post.author}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              <time dateTime={date.toISOString()}>{formattedDate}</time>
-            </div>
+            {dateInfo.isValid && (
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <time dateTime={dateInfo.isoString || undefined}>{dateInfo.label}</time>
+              </div>
+            )}
           </div>
         </header>
 

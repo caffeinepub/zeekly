@@ -96,13 +96,15 @@ export interface Post {
     slug: string;
     datePublished: bigint;
     author: string;
+    isDraft: boolean;
 }
 export interface backendInterface {
     getAllPosts(): Promise<Array<Post>>;
+    getDraftPosts(): Promise<Array<Post>>;
     getPost(slug: string): Promise<Post | null>;
     getPostCount(): Promise<bigint>;
     getPostsByCategory(category: string): Promise<Array<Post>>;
-    newPost(slug: string, author: string, datePublished: bigint, title: string, body: string, categories: Array<string>): Promise<void>;
+    newPost(slug: string, author: string, datePublished: bigint, title: string, body: string, categories: Array<string>, isDraft: boolean): Promise<void>;
 }
 import type { Post as _Post } from "./declarations/backend.did.d.ts";
 export class Backend implements backendInterface {
@@ -118,6 +120,20 @@ export class Backend implements backendInterface {
             }
         } else {
             const result = await this.actor.getAllPosts();
+            return result;
+        }
+    }
+    async getDraftPosts(): Promise<Array<Post>> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getDraftPosts();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getDraftPosts();
             return result;
         }
     }
@@ -163,17 +179,17 @@ export class Backend implements backendInterface {
             return result;
         }
     }
-    async newPost(arg0: string, arg1: string, arg2: bigint, arg3: string, arg4: string, arg5: Array<string>): Promise<void> {
+    async newPost(arg0: string, arg1: string, arg2: bigint, arg3: string, arg4: string, arg5: Array<string>, arg6: boolean): Promise<void> {
         if (this.processError) {
             try {
-                const result = await this.actor.newPost(arg0, arg1, arg2, arg3, arg4, arg5);
+                const result = await this.actor.newPost(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
                 return result;
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
-            const result = await this.actor.newPost(arg0, arg1, arg2, arg3, arg4, arg5);
+            const result = await this.actor.newPost(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
             return result;
         }
     }

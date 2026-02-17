@@ -15,15 +15,25 @@ export const Post = IDL.Record({
   'slug' : IDL.Text,
   'datePublished' : IDL.Int,
   'author' : IDL.Text,
+  'isDraft' : IDL.Bool,
 });
 
 export const idlService = IDL.Service({
   'getAllPosts' : IDL.Func([], [IDL.Vec(Post)], ['query']),
+  'getDraftPosts' : IDL.Func([], [IDL.Vec(Post)], ['query']),
   'getPost' : IDL.Func([IDL.Text], [IDL.Opt(Post)], ['query']),
   'getPostCount' : IDL.Func([], [IDL.Nat], ['query']),
   'getPostsByCategory' : IDL.Func([IDL.Text], [IDL.Vec(Post)], ['query']),
   'newPost' : IDL.Func(
-      [IDL.Text, IDL.Text, IDL.Int, IDL.Text, IDL.Text, IDL.Vec(IDL.Text)],
+      [
+        IDL.Text,
+        IDL.Text,
+        IDL.Int,
+        IDL.Text,
+        IDL.Text,
+        IDL.Vec(IDL.Text),
+        IDL.Bool,
+      ],
       [],
       [],
     ),
@@ -39,15 +49,25 @@ export const idlFactory = ({ IDL }) => {
     'slug' : IDL.Text,
     'datePublished' : IDL.Int,
     'author' : IDL.Text,
+    'isDraft' : IDL.Bool,
   });
   
   return IDL.Service({
     'getAllPosts' : IDL.Func([], [IDL.Vec(Post)], ['query']),
+    'getDraftPosts' : IDL.Func([], [IDL.Vec(Post)], ['query']),
     'getPost' : IDL.Func([IDL.Text], [IDL.Opt(Post)], ['query']),
     'getPostCount' : IDL.Func([], [IDL.Nat], ['query']),
     'getPostsByCategory' : IDL.Func([IDL.Text], [IDL.Vec(Post)], ['query']),
     'newPost' : IDL.Func(
-        [IDL.Text, IDL.Text, IDL.Int, IDL.Text, IDL.Text, IDL.Vec(IDL.Text)],
+        [
+          IDL.Text,
+          IDL.Text,
+          IDL.Int,
+          IDL.Text,
+          IDL.Text,
+          IDL.Vec(IDL.Text),
+          IDL.Bool,
+        ],
         [],
         [],
       ),

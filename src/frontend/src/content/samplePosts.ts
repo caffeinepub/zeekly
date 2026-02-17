@@ -4,7 +4,7 @@ export const samplePosts: Post[] = [
   {
     slug: 'future-of-ai-development',
     author: 'Sarah Chen',
-    datePublished: BigInt(new Date('2026-02-15').getTime() * 1000000),
+    datePublished: BigInt(new Date('2026-02-15').getTime()),
     title: 'The Future of AI Development: Trends to Watch in 2026',
     body: `Artificial Intelligence continues to reshape the technology landscape at an unprecedented pace. As we progress through 2026, several key trends are emerging that will define the next generation of AI applications.
 
@@ -16,11 +16,12 @@ The integration of AI with blockchain technology is creating new possibilities f
 
 Looking ahead, we expect to see more focus on responsible AI development, with emphasis on explainability, fairness, and ethical considerations. The industry is maturing beyond pure performance metrics to consider the broader impact of AI systems on society.`,
     categories: ['AI', 'Innovation', 'Tech Trends'],
+    isDraft: false,
   },
   {
     slug: 'building-scalable-microservices',
     author: 'Michael Rodriguez',
-    datePublished: BigInt(new Date('2026-02-12').getTime() * 1000000),
+    datePublished: BigInt(new Date('2026-02-12').getTime()),
     title: 'Building Scalable Microservices: A Comprehensive Guide',
     body: `Microservices architecture has become the de facto standard for building modern, scalable applications. However, implementing microservices correctly requires careful planning and understanding of distributed systems principles.
 
@@ -34,11 +35,12 @@ Container orchestration platforms like Kubernetes have simplified microservices 
 
 Security in microservices requires a zero-trust approach. Each service should authenticate and authorize requests, even for internal communication. Service meshes can help implement these security policies consistently across all services.`,
     categories: ['Software Development', 'Architecture', 'DevOps'],
+    isDraft: false,
   },
   {
     slug: 'startup-funding-landscape-2026',
     author: 'Emily Watson',
-    datePublished: BigInt(new Date('2026-02-10').getTime() * 1000000),
+    datePublished: BigInt(new Date('2026-02-10').getTime()),
     title: 'Navigating the Startup Funding Landscape in 2026',
     body: `The startup funding environment has evolved significantly over the past few years. Understanding the current landscape is crucial for founders seeking to raise capital for their ventures.
 
@@ -52,11 +54,12 @@ Investors are increasingly interested in startups addressing real-world problems
 
 For founders, building relationships with investors early is more important than ever. The fundraising process often takes longer than expected, and having warm introductions can significantly improve success rates.`,
     categories: ['Startups', 'Funding', 'Entrepreneurship'],
+    isDraft: false,
   },
   {
     slug: 'web3-practical-applications',
     author: 'David Kim',
-    datePublished: BigInt(new Date('2026-02-08').getTime() * 1000000),
+    datePublished: BigInt(new Date('2026-02-08').getTime()),
     title: 'Web3 Beyond the Hype: Practical Applications for Businesses',
     body: `Web3 technology has matured beyond speculation and hype, offering practical solutions for real business problems. Understanding where blockchain and decentralized technologies add genuine value is key to successful implementation.
 
@@ -70,11 +73,12 @@ NFTs have evolved beyond digital art to represent ownership of physical assets, 
 
 However, businesses must approach Web3 pragmatically. Not every problem requires blockchain, and traditional databases often provide better performance and lower costs. The key is identifying use cases where decentralization, transparency, or tokenization provide clear advantages.`,
     categories: ['Web3', 'Blockchain', 'Innovation'],
+    isDraft: false,
   },
   {
     slug: 'cybersecurity-best-practices-2026',
     author: 'Jennifer Martinez',
-    datePublished: BigInt(new Date('2026-02-05').getTime() * 1000000),
+    datePublished: BigInt(new Date('2026-02-05').getTime()),
     title: 'Cybersecurity Best Practices for Modern Applications',
     body: `As cyber threats become more sophisticated, implementing robust security measures is no longer optional for software applications. Developers must adopt a security-first mindset throughout the development lifecycle.
 
@@ -88,11 +92,12 @@ API security requires special attention as APIs become the primary attack surfac
 
 Security awareness training for development teams is crucial. Many vulnerabilities result from simple mistakes that could be prevented with proper education. Regular training sessions keep security top of mind for all team members.`,
     categories: ['Security', 'Software Development', 'Best Practices'],
+    isDraft: false,
   },
   {
     slug: 'cloud-native-development-guide',
     author: 'Robert Thompson',
-    datePublished: BigInt(new Date('2026-02-03').getTime() * 1000000),
+    datePublished: BigInt(new Date('2026-02-03').getTime()),
     title: 'Cloud-Native Development: A Practical Guide',
     body: `Cloud-native development represents a fundamental shift in how we build and deploy applications. Understanding cloud-native principles is essential for modern software engineers.
 
@@ -108,11 +113,12 @@ Infrastructure as Code (IaC) tools like Terraform enable teams to manage cloud r
 
 Monitoring and observability are critical in cloud environments. Distributed tracing, centralized logging, and comprehensive metrics help teams understand application behavior and quickly resolve issues.`,
     categories: ['Cloud Computing', 'DevOps', 'Software Development'],
+    isDraft: false,
   },
   {
     slug: 'mobile-app-development-trends',
     author: 'Lisa Anderson',
-    datePublished: BigInt(new Date('2026-02-01').getTime() * 1000000),
+    datePublished: BigInt(new Date('2026-02-01').getTime()),
     title: 'Mobile App Development Trends Shaping 2026',
     body: `The mobile app development landscape continues to evolve rapidly. Staying current with emerging trends and technologies is crucial for building competitive mobile applications.
 
@@ -128,11 +134,12 @@ AI integration in mobile apps is becoming standard. On-device machine learning e
 
 App store optimization remains crucial for discoverability. Understanding ranking algorithms, optimizing metadata, and gathering positive reviews are essential for app success in crowded marketplaces.`,
     categories: ['Mobile Development', 'Tech Trends', 'Software Development'],
+    isDraft: false,
   },
   {
     slug: 'data-science-business-impact',
     author: 'Dr. James Wilson',
-    datePublished: BigInt(new Date('2026-01-29').getTime() * 1000000),
+    datePublished: BigInt(new Date('2026-01-29').getTime()),
     title: 'Data Science: Driving Business Impact Through Analytics',
     body: `Data science has moved from experimental projects to core business functions. Organizations that effectively leverage data analytics gain significant competitive advantages.
 
@@ -144,29 +151,31 @@ Machine learning models require careful evaluation beyond accuracy metrics. Cons
 
 Real-time analytics are becoming increasingly important. Stream processing technologies enable organizations to act on insights immediately rather than waiting for batch processing cycles.
 
-Data visualization plays a crucial role in communicating insights. Effective dashboards and reports help stakeholders understand complex data and make informed decisions.
+Data visualization plays a crucial role in communicating insights. Effective visualizations make complex data accessible to non-technical stakeholders and drive informed decision-making.
 
-The democratization of data science tools is empowering business users. Low-code and no-code platforms enable domain experts to perform analyses without deep technical expertise, though data scientists remain essential for complex problems.`,
+Privacy and ethical considerations are paramount in data science. Organizations must balance the value of data insights with respect for individual privacy and compliance with regulations like GDPR.`,
     categories: ['Data Science', 'Analytics', 'Business Strategy'],
+    isDraft: false,
   },
   {
     slug: 'sustainable-tech-practices',
     author: 'Maria Garcia',
-    datePublished: BigInt(new Date('2026-01-26').getTime() * 1000000),
+    datePublished: BigInt(new Date('2026-01-26').getTime()),
     title: 'Sustainable Technology: Building for a Greener Future',
-    body: `The technology industry is increasingly focused on sustainability and environmental impact. Developers and organizations must consider the ecological footprint of their digital products.
+    body: `The technology industry is increasingly recognizing its environmental impact and taking steps toward sustainability. Building greener technology is both an ethical imperative and a business opportunity.
 
-Energy-efficient code is more than an optimization exercise. Reducing computational requirements directly translates to lower energy consumption and carbon emissions, especially at scale.
+Energy-efficient computing is becoming a priority. From optimizing algorithms to choosing energy-efficient hardware, developers can significantly reduce the carbon footprint of their applications.
 
-Green hosting providers use renewable energy to power data centers. Choosing environmentally conscious infrastructure partners is a simple way to reduce your application's carbon footprint.
+Cloud providers are investing heavily in renewable energy. Choosing cloud regions powered by renewable sources and optimizing resource usage helps reduce environmental impact.
 
-Edge computing reduces data transfer and processing in centralized data centers. By processing data closer to its source, we can significantly reduce energy consumption and improve efficiency.
+E-waste is a growing concern. Designing products for longevity, repairability, and recyclability helps reduce the environmental impact of hardware disposal.
 
-Sustainable software design considers the entire lifecycle of applications. This includes efficient resource usage, minimal data storage, and graceful degradation on older devices to extend hardware lifespan.
+Remote work has reduced commuting emissions, but the energy consumption of home offices and data centers must be considered. Organizations are implementing policies to minimize the environmental impact of distributed work.
 
-The circular economy principles apply to technology as well. Designing for repairability, recyclability, and longevity helps reduce electronic waste and resource consumption.
+Sustainable software development practices include efficient code, reduced data transfer, and thoughtful feature design. Every optimization that improves performance also reduces energy consumption.
 
-Measuring and reporting environmental impact is becoming standard practice. Tools and frameworks for calculating carbon footprints of digital services help organizations track progress toward sustainability goals.`,
+The circular economy model is gaining traction in tech. Companies are exploring product-as-a-service models, refurbishment programs, and material recovery to minimize waste and maximize resource efficiency.`,
     categories: ['Sustainability', 'Tech Trends', 'Innovation'],
+    isDraft: false,
   },
 ];

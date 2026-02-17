@@ -1,13 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Build a modern, clean Zeekly landing page and structured guest-post blog experience with a tech-oriented visual identity, including a post-hero “Lifestyle” CTA and core blog list/detail navigation backed by a simple Internet Computer content API.
+**Goal:** Fix the “Invalid time value” runtime error by making `Post.datePublished` parsing/formatting resilient across Zeekly’s UI, align sample post date units with the backend representation, and redeploy the site.
 
 **Planned changes:**
-- Create a homepage with a hero section introducing Zeekly and a consistent minimal, tech-forward theme (typography, colors, spacing, components).
-- Add a prominent CTA button labeled “Lifestyle” immediately after the hero that links to https://zeekly.co.uk/ in the same tab.
-- Implement a structured blog layout on the homepage (e.g., featured + latest posts) with clear metadata (title, excerpt, date, category/section).
-- Add blog pages: posts listing view and post detail view, pre-populated with sample posts covering innovation, software guides, startups, and tech news.
-- Implement a minimal backend posts API in a single Motoko actor to fetch the posts list and fetch a single post by identifier, and wire the frontend to use it.
+- Add safe date parsing/validation for `Post.datePublished` so the UI never calls `toISOString()` or `toLocaleDateString()` on invalid `Date` values across list cards and post detail pages.
+- Render date UI with fallbacks for missing/invalid/unparseable dates (e.g., hide date or show “Unknown date”), and only render `<time dateTime=...>` when a valid ISO string is available.
+- Standardize `frontend/src/content/samplePosts.ts` date values to match the backend `Post.datePublished` epoch unit (Motoko `Int`) to prevent out-of-range timestamps in JavaScript.
+- Produce and publish an updated production build so the live site reflects the fix.
 
-**User-visible outcome:** Visitors can view a polished Zeekly homepage, click the “Lifestyle” CTA to navigate to zeekly.co.uk in the same tab, browse a list of sample tech posts, and open individual post detail pages with clear metadata and consistent styling.
+**User-visible outcome:** Users can browse the Home page, Posts list, and Post detail pages without seeing “Invalid time value” errors, and dates display safely (or fall back gracefully) even when data is missing or malformed.

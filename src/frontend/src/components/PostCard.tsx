@@ -1,18 +1,16 @@
 import { Link } from '@tanstack/react-router';
 import { Calendar, User } from 'lucide-react';
 import type { Post } from '../backend';
+import { safeFormatPostDate } from '../lib/postDate';
 
 interface PostCardProps {
   post: Post;
 }
 
 export default function PostCard({ post }: PostCardProps) {
-  const date = new Date(Number(post.datePublished));
-  const formattedDate = date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  // Safely parse and format the date, with fallback for invalid dates
+  // Verification: Navigate to posts list - should not throw "Invalid time value" even with malformed dates
+  const dateInfo = safeFormatPostDate(post.datePublished);
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:shadow-lg hover:border-primary/50">
@@ -43,10 +41,12 @@ export default function PostCard({ post }: PostCardProps) {
             <User className="h-3.5 w-3.5" />
             <span>{post.author}</span>
           </div>
-          <div className="flex items-center gap-1">
-            <Calendar className="h-3.5 w-3.5" />
-            <time dateTime={date.toISOString()}>{formattedDate}</time>
-          </div>
+          {dateInfo.isValid && (
+            <div className="flex items-center gap-1">
+              <Calendar className="h-3.5 w-3.5" />
+              <time dateTime={dateInfo.isoString || undefined}>{dateInfo.label}</time>
+            </div>
+          )}
         </div>
       </div>
     </article>

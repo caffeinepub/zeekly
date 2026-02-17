@@ -1,69 +1,45 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-17T08:12:48.387Z",
-  "summary": "Diff adds a Zeekly landing page with hero + Lifestyle CTA, blog list/detail routes, themed styling, and a Motoko posts API. Some extra backend endpoints and UI features were implemented beyond the request; no clearly provable core requirement gaps from the provided diff summary.",
-  "missing_requirements": [],
-  "hallucinated_features": [
+  "generatedAt": "2026-02-17T08:22:18.589Z",
+  "summary": "Implemented a safe date parsing/formatting utility and updated PostCard and PostDetailPage to avoid calling Date formatting methods on invalid dates, and standardized sample post dates to millisecond epoch. However, the diff also introduces an unrelated backend schema change (adding `isDraft` plus a migration) and does not provide concrete evidence of an actual production deployment/publish step being performed.",
+  "missing_requirements": [
     {
-      "description": "Backend supports creating posts via an update call (newPost), which was not requested (only minimal query content API was required).",
-      "reason": "REQ-4 only calls for query methods to fetch list + single post by identifier; no authoring/mutation endpoints were requested.",
+      "id": "REQ-8",
+      "requirement": "After applying the fix, publish the updated build so the website is live with the error resolved.",
+      "reason": "The diff shows code changes and a deployment guide document, but no evidence of an actual production publish/redeploy being executed or automated (e.g., CI/CD config changes, deployment scripts, canister config updates).",
       "evidence": [
-        "backend/main.mo"
-      ]
-    },
-    {
-      "description": "Backend exposes additional query endpoints getPostsByCategory and getPostCount that were not requested.",
-      "reason": "REQ-4 acceptance criteria only require getAllPosts (list) and getPost (single).",
-      "evidence": [
-        "backend/main.mo"
-      ]
-    },
-    {
-      "description": "Posts list page includes search and category filtering UI.",
-      "reason": "REQ-3 requires list + detail navigation with metadata; it does not ask for search/filter functionality.",
-      "evidence": [
-        "frontend/src/pages/PostsListPage.tsx",
-        "frontend/src/hooks/usePosts.ts"
-      ]
-    },
-    {
-      "description": "Footer includes Caffeine.ai attribution link with UTM parameters and target=\"_blank\".",
-      "reason": "Not requested by any REQ; the only explicit same-tab constraint applies to the Lifestyle CTA.",
-      "evidence": [
-        "frontend/src/components/SiteFooter.tsx"
-      ]
-    },
-    {
-      "description": "Footer includes social media icon links (GitHub/X/LinkedIn) with placeholder href=\"#\".",
-      "reason": "Not requested in requirements.",
-      "evidence": [
-        "frontend/src/components/SiteFooter.tsx"
+        "frontend/DEPLOYMENT.md"
       ]
     }
   ],
-  "confidence": 0.74,
+  "hallucinated_features": [
+    {
+      "description": "Backend schema change adding `isDraft` to `Post`, plus new draft-related query endpoint and a state migration.",
+      "reason": "The BuildRequest focuses on fixing frontend date parsing and standardizing sample post dates; it explicitly lists non-goals such as adding new blog features/admin functionality, and does not request adding draft support or changing the backend Post schema.",
+      "evidence": [
+        "backend/main.mo",
+        "backend/migration.mo"
+      ]
+    },
+    {
+      "description": "Added `isDraft` field to sample posts content.",
+      "reason": "Not requested by REQ-6/REQ-7; appears to be supporting the unrequested backend `isDraft` feature.",
+      "evidence": [
+        "frontend/src/content/samplePosts.ts"
+      ]
+    }
+  ],
+  "confidence": 0.72,
   "changed_files": [
-    "all_files_summary.json",
     "backend/main.mo",
+    "backend/migration.mo",
     "frontend-file-summaries.txt",
-    "frontend/index.css",
-    "frontend/index.html",
-    "frontend/src/App.tsx",
+    "frontend/DEPLOYMENT.md",
     "frontend/src/components/PostCard.tsx",
-    "frontend/src/components/SiteFooter.tsx",
-    "frontend/src/components/SiteHeader.tsx",
-    "frontend/src/components/SiteLayout.tsx",
     "frontend/src/content/samplePosts.ts",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
-    "frontend/src/hooks/usePosts.ts",
-    "frontend/src/index.css",
-    "frontend/src/main.tsx",
-    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/lib/postDate.ts",
     "frontend/src/pages/PostDetailPage.tsx",
-    "frontend/src/pages/PostsListPage.tsx",
-    "frontend/tailwind.config.js",
     "project_state.json"
   ]
 }

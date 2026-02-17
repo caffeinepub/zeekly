@@ -2,14 +2,12 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-modern-clean-professional-landing-page-for-zeekly-with-a-strong-tech-oriented-visual-identity-using-a-minimal-layout-clear-typography-and-a-structured-blog-format-suitable-for-a-technology-focused-guest-post-platform",
-      "featureTitle": "Create a modern, clean, professional landing page for “Zeekly” with a strong tech-oriented visual identity, using a minimal layout, clear typography, and a structured blog format suitable for a technology-focused guest post platform.",
+      "featureId": "feature-eliminate-the-runtime-error-invalid-time-value-by-making-date-parsing-formatting-resilient-for-post-datepublished-across-the-ui-including-list-cards-and-post-detail-ensure-the-ui-never-calls-toisostring-or-tolocaledatestring-on-an-invalid-date-instance",
+      "featureTitle": "Eliminate the runtime error \"Invalid time value\" by making date parsing/formatting resilient for `Post.datePublished` across the UI (including list cards and post detail). Ensure the UI never calls `toISOString()` or `toLocaleDateString()` on an invalid `Date` instance.",
       "files": [
-        "frontend/src/App.tsx",
         "frontend/src/components/PostCard.tsx",
-        "frontend/src/components/SiteHeader.tsx",
-        "frontend/src/components/SiteLayout.tsx",
-        "frontend/src/pages/HomePage.tsx"
+        "frontend/src/lib/postDate.ts",
+        "frontend/src/pages/PostDetailPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -19,37 +17,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-6"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-a-prominent-call-to-action-button-immediately-after-the-hero-section-with-the-label-lifestyle-that-links-to-https-zeekly-co-uk-and-opens-in-the-same-tab-the-button-must-feel-native-to-the-site-design-not-ad-like-while-remaining-visually-noticeable-clean-and-professional",
-      "featureTitle": "Add a prominent call-to-action button immediately after the hero section with the label “Lifestyle” that links to https://zeekly.co.uk/ and opens in the same tab; the button must feel native to the site design (not ad-like) while remaining visually noticeable, clean, and professional.",
+      "featureId": "feature-standardize-sample-post-dates-to-match-the-backend-post-datepublished-representation-motoko-int-so-that-sample-content-does-not-generate-out-of-range-timestamps-e-g-microseconds-nanoseconds-that-break-javascript-date-conversion",
+      "featureTitle": "Standardize sample post dates to match the backend `Post.datePublished` representation (Motoko `Int`) so that sample content does not generate out-of-range timestamps (e.g., microseconds/nanoseconds) that break JavaScript `Date` conversion.",
       "files": [
-        "frontend/src/pages/HomePage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-implement-core-blog-navigation-and-pages-for-a-structured-publishing-experience-a-posts-listing-view-and-a-post-detail-view-pre-populated-with-sample-content-covering-tech-articles-digital-innovation-software-guides-startup-insights-and-trending-technology-news",
-      "featureTitle": "Implement core blog navigation and pages for a structured publishing experience: a posts listing view and a post detail view, pre-populated with sample content covering tech articles, digital innovation, software guides, startup insights, and trending technology news.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/SiteHeader.tsx",
         "frontend/src/content/samplePosts.ts",
-        "frontend/src/pages/PostDetailPage.tsx",
-        "frontend/src/pages/PostsListPage.tsx"
+        "frontend/src/lib/postDate.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -59,18 +36,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-7"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-a-minimal-backend-content-api-for-posts-so-the-frontend-can-fetch-post-lists-and-individual-post-details-from-the-internet-computer-canister-single-motoko-actor-using-a-simple-data-model-suitable-for-blog-publishing",
-      "featureTitle": "Add a minimal backend content API for posts so the frontend can fetch post lists and individual post details from the Internet Computer canister (single Motoko actor), using a simple data model suitable for blog publishing.",
+      "featureId": "feature-after-applying-the-fix-publish-the-updated-build-so-the-website-is-live-with-the-error-resolved",
+      "featureTitle": "After applying the fix, publish the updated build so the website is live with the error resolved.",
       "files": [
-        "frontend/src/hooks/usePosts.ts",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/PostDetailPage.tsx",
-        "frontend/src/pages/PostsListPage.tsx"
+        "frontend/DEPLOYMENT.md",
+        "frontend/src/components/PostCard.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -80,29 +55,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-apply-a-coherent-distinctive-visual-theme-colors-typography-spacing-component-styling-appropriate-for-a-modern-technology-publication-and-enforce-it-consistently-across-zeekly-pages-and-components",
-      "featureTitle": "Apply a coherent, distinctive visual theme (colors, typography, spacing, component styling) appropriate for a modern technology publication and enforce it consistently across Zeekly pages and components.",
-      "files": [
-        "frontend/src/components/PostCard.tsx",
-        "frontend/src/components/SiteLayout.tsx",
-        "frontend/src/index.css",
-        "frontend/src/pages/PostDetailPage.tsx",
-        "frontend/tailwind.config.js"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
+        "REQ-8"
       ],
       "confidence": "high"
     }

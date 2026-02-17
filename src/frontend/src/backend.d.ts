@@ -14,11 +14,13 @@ export interface Post {
     slug: string;
     datePublished: bigint;
     author: string;
+    isDraft: boolean;
 }
 export interface backendInterface {
     getAllPosts(): Promise<Array<Post>>;
+    getDraftPosts(): Promise<Array<Post>>;
     getPost(slug: string): Promise<Post | null>;
     getPostCount(): Promise<bigint>;
     getPostsByCategory(category: string): Promise<Array<Post>>;
-    newPost(slug: string, author: string, datePublished: bigint, title: string, body: string, categories: Array<string>): Promise<void>;
+    newPost(slug: string, author: string, datePublished: bigint, title: string, body: string, categories: Array<string>, isDraft: boolean): Promise<void>;
 }

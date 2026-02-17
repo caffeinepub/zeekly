@@ -17,14 +17,16 @@ export interface Post {
   'slug' : string,
   'datePublished' : bigint,
   'author' : string,
+  'isDraft' : boolean,
 }
 export interface _SERVICE {
   'getAllPosts' : ActorMethod<[], Array<Post>>,
+  'getDraftPosts' : ActorMethod<[], Array<Post>>,
   'getPost' : ActorMethod<[string], [] | [Post]>,
   'getPostCount' : ActorMethod<[], bigint>,
   'getPostsByCategory' : ActorMethod<[string], Array<Post>>,
   'newPost' : ActorMethod<
-    [string, string, bigint, string, string, Array<string>],
+    [string, string, bigint, string, string, Array<string>, boolean],
     undefined
   >,
 }

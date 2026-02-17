@@ -1,117 +1,73 @@
 {
   "kind": "build_request",
-  "title": "Zeekly tech guest-post blog site with structured layout and post-hero CTA button",
+  "title": "Fix 'Invalid time value' date parsing and redeploy Zeekly",
   "projectName": "Zeekly",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Create a modern, clean, professional landing page for “Zeekly” with a strong tech-oriented visual identity, using a minimal layout, clear typography, and a structured blog format suitable for a technology-focused guest post platform.",
+      "id": "REQ-6",
+      "text": "Eliminate the runtime error \"Invalid time value\" by making date parsing/formatting resilient for `Post.datePublished` across the UI (including list cards and post detail). Ensure the UI never calls `toISOString()` or `toLocaleDateString()` on an invalid `Date` instance.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-6"
         ],
         "quotes": [
-          "The website name is Zeekly, and it will be a technology-focused guest post platform... The design should look modern, clean, and professional, with a strong tech-oriented visual identity. Use a minimal layout, clear typography, and a structured blog format suitable for guest posting."
+          "Invalid time value Yeh error a raha hai"
         ]
       },
       "acceptanceCriteria": [
-        "Homepage includes a hero section introducing Zeekly as a technology-focused guest post/blog platform",
-        "Visual design is consistent across the page: minimal layout, clear typography, tech-forward styling",
-        "Homepage contains a structured blog layout section (e.g., featured posts + latest posts) appropriate for guest posting"
+        "Browsing the Home page, Posts list, and Post detail pages does not throw \"Invalid time value\" in the browser console.",
+        "If a post has a missing/invalid/unparseable `datePublished`, the page still renders and shows a safe fallback (e.g., hides the date or shows an \"Unknown date\" label) without throwing.",
+        "The `<time dateTime=...>` attribute is only rendered with a valid ISO string when the parsed date is valid."
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Add a prominent call-to-action button immediately after the hero section with the label “Lifestyle” that links to https://zeekly.co.uk/ and opens in the same tab; the button must feel native to the site design (not ad-like) while remaining visually noticeable, clean, and professional.",
+      "id": "REQ-7",
+      "text": "Standardize sample post dates to match the backend `Post.datePublished` representation (Motoko `Int`) so that sample content does not generate out-of-range timestamps (e.g., microseconds/nanoseconds) that break JavaScript `Date` conversion.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-6"
         ],
         "quotes": [
-          "After the hero section, add a prominent call-to-action button. The button text should be “Lifestyle” and it should link to https://zeekly.co.uk/ . The button should look natural within the design (not like an advertisement) and match the modern tech style of the website... opening in the same tab."
+          "Invalid time value Yeh error a raha hai"
         ]
       },
       "acceptanceCriteria": [
-        "A button labeled exactly “Lifestyle” appears directly after the hero section",
-        "Clicking the button navigates to https://zeekly.co.uk/ in the same browser tab (no target=\"_blank\")",
-        "Button styling matches the site’s modern tech theme and does not resemble an advertisement"
+        "`frontend/src/content/samplePosts.ts` uses a consistent epoch unit that produces valid JavaScript dates when rendered (no overflow/out-of-range values).",
+        "With `actor` unavailable (fallback to `samplePosts`), the Posts list and Post detail pages render dates correctly and do not throw errors."
       ]
     },
     {
-      "id": "REQ-3",
-      "text": "Implement core blog navigation and pages for a structured publishing experience: a posts listing view and a post detail view, pre-populated with sample content covering tech articles, digital innovation, software guides, startup insights, and trending technology news.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-3"
-        ],
-        "quotes": [
-          "The main purpose of the site is to publish high-quality tech articles, digital innovation content, software guides, startup insights, and trending technology news."
-        ]
-      },
-      "acceptanceCriteria": [
-        "Users can browse a list of posts and open a post detail page within the site",
-        "The UI includes clear post metadata presentation (e.g., title, excerpt, date, category/section)",
-        "Sample posts cover the requested topic areas (innovation, software guides, startups, tech news)"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Add a minimal backend content API for posts so the frontend can fetch post lists and individual post details from the Internet Computer canister (single Motoko actor), using a simple data model suitable for blog publishing.",
+      "id": "REQ-8",
+      "text": "After applying the fix, publish the updated build so the website is live with the error resolved.",
       "target": "both",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-7"
         ],
         "quotes": [
-          "The main purpose of the site is to publish high-quality tech articles... and trending technology news."
+          "Is ko fix kar ky website live kar do"
         ]
       },
       "acceptanceCriteria": [
-        "Backend exposes query methods to fetch a list of posts and fetch a single post by identifier",
-        "Frontend loads posts via the backend actor and renders list + detail views",
-        "The solution stays within a single Motoko main actor (no additional backend services)"
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Apply a coherent, distinctive visual theme (colors, typography, spacing, component styling) appropriate for a modern technology publication and enforce it consistently across Zeekly pages and components.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-3"
-        ],
-        "quotes": [
-          "The design should look modern, clean, and professional, with a strong tech-oriented visual identity. Use a minimal layout, clear typography..."
-        ]
-      },
-      "acceptanceCriteria": [
-        "A consistent design system is evident across navigation, hero, post cards, and post detail layout",
-        "Theme avoids default/unstyled appearance and remains clean and professional",
-        "Typography hierarchy (headings/body/meta) is clearly defined and consistent"
+        "A production build completes successfully.",
+        "The live site reflects the fix (no \"Invalid time value\" error when navigating between pages)."
       ]
     }
   ],
   "constraints": [
-    "Use English for all user-facing UI text.",
-    "Do not edit files in frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
-    "Backend must remain a single Motoko actor (all logic in backend/main.mo); only add backend/migration.mo if an upgrade/state migration is actually needed.",
-    "The “Lifestyle” CTA must open in the same tab (do not use target=\"_blank\")."
+    "Do not edit files under `frontend/src/components/ui` (compose these components instead).",
+    "Do not edit any files listed in `frontend.immutablePaths` (e.g., `frontend/src/hooks/useInternetIdentity.ts(x)`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`).",
+    "Backend must remain a single Motoko actor in `backend/main.mo`; only add a migration file if a state/schema upgrade is required."
   ],
   "nonGoals": [
-    "Do not add third-party authentication providers (only Internet Identity is allowed, and it is not required for this scope).",
-    "Do not integrate external databases or third-party CMS services.",
-    "Do not implement real-time features (WebSockets/chat/push notifications).",
-    "Do not add payments or subscription functionality."
+    "Adding new blog features (e.g., categories management UI, guest post submission, admin panel).",
+    "Changing the overall site branding/content beyond what is needed to fix the date error and redeploy."
   ],
   "imageRequirements": {
-    "required": [
-      "Zeekly wordmark logo in a modern tech style (zeekly-wordmark.dim_1200x300.png)",
-      "Abstract minimal tech hero background/illustration (zeekly-hero-bg.dim_2400x1200.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }
